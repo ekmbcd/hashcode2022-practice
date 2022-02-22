@@ -17,7 +17,7 @@ Set.prototype.subSet = function(otherSet)
     return false; 
   else
   {
-    for(var elem of this) 
+    for(const elem of this) 
     { 
       if(!otherSet.has(elem)) 
         return false; 
@@ -29,7 +29,7 @@ Set.prototype.subSet = function(otherSet)
 // check if sets have a common element
 Set.prototype.intersects = function(otherSet) 
 { 
-  for(var elem of this) 
+  for(const elem of this) 
   { 
     if(otherSet.has(elem)) 
       return true; 
