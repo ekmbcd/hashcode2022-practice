@@ -72,11 +72,14 @@ async function main() {
 
     let bestRemovedSet = new Set()
 
+    let skipped = 0
     for (const client of clients) {
 
       // check if we need to skip
-      if (isSkippable(client, discardedIngredients))
+      if (isSkippable(client, discardedIngredients)) {
+        skipped += 1
         continue
+      }
       
       // calculate delta if we remove set of ingredients
       const tmpRemoved = new Set([...discardedIngredients])
@@ -89,6 +92,7 @@ async function main() {
         bestRemovedSet = client.dislike
       }
     }
+    console.log('skipped', skipped, 'out of', clients.length)
 
     // try again if we removed something
     if (bestDelta) {
